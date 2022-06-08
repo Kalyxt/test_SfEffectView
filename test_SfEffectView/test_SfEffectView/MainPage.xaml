@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="test_SfEffectView.MainPage"
+             xmlns:DataClasses="clr-namespace:test_SfEffectView"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms">
+
+    <StackLayout>
+        <syncfusion:SfListView x:Name="fro_ListView"
+								VerticalOptions="Fill"
+								HorizontalOptions="FillAndExpand"
+								SelectionMode= "None"
+								BackgroundColor="Black"
+								IsScrollBarVisible="True"
+								SelectionBackgroundColor="Gray"
+                                ItemsSource="{Binding Items}"
+								AutoFitMode="Height">
+            
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate x:DataType="DataClasses:Item">
+                    <syncEffectsView:SfEffectsView IsClippedToBounds="True"
+													BackgroundColor="#333333"
+													CornerRadius="10"
+                                                    Margin="5,10,5,0"
+													AnimationCompleted="SfEffectsView_AnimationCompleted">
+                        <Grid Padding="5,10,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+								   FontSize="20"
+								   Text="{Binding Name}"
+								   TextColor="White"
+								   VerticalOptions="StartAndExpand"
+								   HorizontalOptions="FillAndExpand"
+								   LineBreakMode="MiddleTruncation"/>
+
+                        </Grid>
+                    </syncEffectsView:SfEffectsView>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+    </StackLayout>
+
+</ContentPage>
